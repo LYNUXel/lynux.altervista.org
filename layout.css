@@ -1,0 +1,934 @@
+/* ************************************
+************* AlterPages **************
+**************************************/
+
+
+/* html */
+
+body {
+    margin: 10;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+:focus {
+    outline: 0
+}
+
+img {
+    border: 0
+}
+
+p {
+    margin: 10px 0;
+}
+
+
+/* img alignment */
+
+.align-left {
+    float: left;
+    margin: 2px 10px 0 0;
+}
+
+.align-right {
+    float: right;
+    margin: 2px 0 0 10px;
+}
+
+.align-center {
+    margin: 5px auto;
+    display: block;
+}
+
+#sidebar img.img-medium {
+    width: 100%;
+}
+
+img.img-medium {
+    max-width: 90%;
+}
+
+img.img-small {
+    max-width: 45%;
+}
+
+
+/* grid 960px */
+
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11 {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.grid_1 {
+    width: 700px;
+}
+
+.grid_2 {
+    width: 220px;
+}
+
+.grid_3 {
+    width: 50%;
+}
+
+.grid_4 {
+    width: 100%;
+}
+
+.grid_5 {
+    width: 540px;
+}
+
+.grid_6 {
+    width: 380px;
+}
+
+.grid_7 {
+    width: 460px;
+}
+
+.grid_8 {
+    width: 460px;
+}
+
+.grid_9 {
+    width: 740px;
+}
+
+.grid_10 {
+    width: 180px;
+}
+
+.grid_11 {
+    width: 50%;
+}
+
+
+/* layout */
+
+#wrap {
+    width: 90%;
+    margin: 10px auto;
+    padding: 0;
+    /* overflow-x: clip; */
+}
+
+#header {
+    position: relative;
+    min-height: 50%;
+    padding: 1px 0;
+    margin: 0;
+}
+
+#header .widget-nav {
+    overflow: clip;
+}
+
+#navigation {
+    position: relative;
+    z-index: 1;
+}
+
+#navigation .widget-nav {
+    padding: 0;
+    margin: 0;
+    overflow: clip
+}
+
+.widget,
+.widget-adv,
+.widget-map {
+    padding: 0 10px;
+    margin-bottom: 10px;
+    clear: both;
+    overflow: scroll;
+    min-height: 30px;
+}
+
+#sidebar .widget-map {
+    padding: 0;
+    border: none;
+}
+
+.widget-html {
+    padding: 0 10px;
+    margin: 0 0 10px 0;
+    clear: both;
+    overflow: scroll;
+    min-height: auto;
+}
+
+#sidebar .widget-html {
+    padding: 0
+}
+
+.widget-adv {
+    overflow: hidden;
+}
+
+#sidebar .widget-adv {
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#content {
+    padding: 10px 0;
+    width: 90%;
+}
+
+#sidebar {
+    padding: 10px 0
+}
+
+#sidebar .widget {
+    padding: 0 10px 5px 10px;
+}
+
+#footer {
+    clear: both;
+    margin: 0 0 10px 0;
+    padding: 10px 0;
+}
+
+
+/* :float */
+
+.clear {
+    clear: both;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+
+/* typography */
+
+h1 {
+    font-weight: normal;
+    line-height: normal;
+    letter-spacing: 1px;
+    padding: 5px 0;
+    margin: 0;
+}
+
+h2 {
+    line-height: normal;
+    padding: 5px 0;
+    margin: 0;
+}
+
+h3 {
+    font-weight: bold;
+    line-height: normal;
+    padding: 5px 0;
+    margin: 0;
+}
+
+
+/* Nav header */
+
+div#header ul.nav {
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 0;
+    height: 32px;
+}
+
+div#header ul.nav li {
+    float: left;
+    line-height: 18px;
+    height: 20%;
+    padding: 2px 0 6px 0;
+    position: relative;
+}
+
+div#header ul.nav ul {
+    padding: 6px;
+    margin: 0;
+    list-style-type: none;
+    position: absolute;
+    min-width: 130px;
+    top: 24px;
+    /* using left instead of display to hide menus because display: none isn't read by screen readers */
+    left: 0;
+    visibility: hidden;
+    z-index: 888;
+}
+
+div#header ul.nav ul li {
+    /* all list items */
+    /* float: left;
+	 width: 20em; */
+    /* width needed or else Opera goes nuts */
+    height: auto;
+    width: auto;
+    display: block;
+    float: none;
+    position: relative;
+    margin: 0 0 0 16px;
+    padding: 0;
+}
+
+div#header ul.nav li a {
+    text-decoration: none;
+    padding: 4px 8px;
+    line-height: 20px;
+}
+
+div#header ul.nav ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 4px 8px 4px 4px;
+    font-size: 12px;
+    border: none;
+}
+
+div#header ul.nav ul li a:hover {
+    text-decoration: underline;
+}
+
+div#header ul.nav li:hover ul {
+    visibility: visible;
+}
+
+
+/* Nav sidebar */
+
+div#sidebar ul.nav {
+    list-style-type: none;
+    margin: 5px auto 10px auto;
+    padding: 0;
+    text-indent: 0;
+    width: 95%;
+}
+
+div#sidebar ul.nav li {
+    margin: 0;
+    padding: 0;
+    text-indent: 0;
+    width: 100%;
+}
+
+div#sidebar ul.nav a {
+    display: block;
+    line-height: 24px;
+    padding: 6px 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+div#sidebar ul.nav a.last {
+    border-bottom: none;
+}
+
+div#sidebar ul.nav li ul {
+    margin: 10px 0;
+    padding: 5px 0 5px 30px;
+}
+
+div#sidebar ul.nav li ul li {
+    padding: 2px 0;
+    margin: 0 0 4px 0;
+    width: 90%;
+}
+
+div#sidebar ul.nav li ul li a {
+    display: inline;
+    border: none;
+    padding: 0 3px;
+    line-height: 160%;
+}
+
+
+/* Navigation */
+
+div#navigation ul.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    min-height: 34px;
+}
+
+div#navigation ul.nav li {
+    float: left;
+    line-height: 26px;
+    height: 26px;
+    padding: 4px 0;
+    position: relative;
+    margin-bottom: 1px
+}
+
+div#navigation ul.nav ul {
+    padding: 6px;
+    margin: 0;
+    list-style: none;
+    position: absolute;
+    min-width: 130px;
+    top: 34px;
+    /* using left instead of display to hide menus because display: none isn't read by screen readers */
+    left: 0;
+    visibility: hidden;
+    z-index: 999;
+}
+
+div#navigation ul.nav ul li {
+    /* all list items */
+    /* float: left;
+	 width: 20em; */
+    /* width needed or else Opera goes nuts */
+    height: auto;
+    width: auto;
+    display: block;
+    float: none;
+    position: relative;
+    margin: 0 0 0 16px;
+    padding: 0;
+}
+
+div#navigation ul.nav li a {
+    text-decoration: none;
+    padding: 3px 8px;
+    line-height: 20px
+}
+
+div#navigation ul.nav ul li a {
+    display: block;
+    text-decoration: none;
+    padding: 2px 8px 2px 4px;
+    font-size: 12px;
+    border: none;
+}
+
+div#navigation ul.nav ul li a:hover {
+    text-decoration: underline;
+}
+
+div#navigation ul.nav li:hover ul {
+    visibility: visible;
+}
+
+
+/* Contact Form */
+
+.apmailer-popup {
+    border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 10px 0 #333333;
+    -moz-box-shadow: 0 0 10px 0 #333333;
+    -webkit-box-shadow: 0 0 10px 0 #333333;
+    background-color: white;
+    border: 1px solid #A1A1A1;
+    width: 560px;
+    height: 400px;
+    padding: 10px 15px;
+}
+
+.apmailer-popup iframe {
+    border: none;
+    overflow: hidden;
+}
+
+.apmailer-head {
+    border-bottom: 1px solid #cfcfcf;
+    margin-bottom: 10px;
+    padding: 0 0 5px 0;
+    text-align: right;
+}
+
+.apmailer-head img {
+    cursor: pointer;
+    vertical-align: middle;
+    margin-right: 5px
+}
+
+table.web-form {
+    width: 90%;
+}
+
+table.web-form th {
+    font-weight: bold;
+    text-align: left;
+    padding-right: 20px;
+}
+
+table.web-form td {
+    font-weight: normal;
+}
+
+table.web-form input[type="text"],
+table.web-form textarea {
+    font-weight: normal;
+    font-family: inherit;
+    font-size: 90%;
+    padding: 5px 10px;
+    width: 90%;
+    line-height: 150%;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #fff;
+    /* default value */
+    border-color: #ccc;
+    /* default value */
+}
+
+table.web-form input[type="submit"] {
+    border-radius: 3px 3px 3px 3px;
+    -moz-border-radius: 3px 3px 3px 3px;
+    -webkit-border-radius: 3px 3px 3px 3px;
+    cursor: pointer;
+    font-family: "Lucida Grande", Arial, sans-serif;
+    font-size: 12px;
+    margin: 0 2px 0 0;
+    padding: 3px 7px;
+    border: none;
+    color: #ffffff;
+    /* default value */
+    background-color: #313131;
+    /* default value */
+}
+
+table.web-form input[type="text"] {
+    width: 220px;
+}
+
+table.web-form textarea {
+    width: 340px;
+    min-height: 120px;
+    overflow-y: auto;
+}
+
+
+/* vcard */
+
+div.fn {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+div.org {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+
+/* chat */
+
+.widget #av-chat {
+    width: 99%;
+    height: auto;
+    font-family: "Lucida Grande", Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.widget #av-chat form {
+    background: url(http://im.altervista.org/alterpages/chat-bg.png) no-repeat left top;
+    width: 230px;
+    min-height: 80px;
+    padding-top: 20px;
+    margin: 10px auto;
+}
+
+.widget #av-chat #av-user {
+    background: white;
+    padding: 3px 2px;
+    border: 1px solid #c3c3c3;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    width: 140px;
+    margin: 0 0px 0 10px;
+}
+
+.widget #av-chat #btn-open {
+    height: auto;
+    width: auto;
+    font-family: "Lucida Grande", Arial, sans-serif;
+    background: #2e3192;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 3px 8px;
+}
+
+.widget #av-chat #btn-open:hover {
+    background: #fdb51c;
+    color: #000;
+}
+
+.widget p.av-info {
+    padding: 5px 0 10px 0;
+    margin: 0;
+}
+
+
+/* Edit btn */
+
+#footer-edit {
+    width: 200px;
+    margin: auto;
+    padding: 5px 0;
+    clear: both;
+    overflow: auto;
+}
+
+#footer-edit a,
+.widget a.page-edit {
+    display: block;
+    height: 16px;
+    float: left;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    line-height: 16px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+}
+
+#footer-edit a.page-edit,
+.widget a.page-edit {
+    padding: 0 10px 0 20px;
+    background: #efefef url('https://im.altervista.org/alterpages/btn-edit.png') no-repeat 6px 3px;
+    color: #626262;
+    text-shadow: 0 1px 1px #fff;
+    margin-right: 10px;
+    border: 1px solid #c2c2c2;
+}
+
+#footer-edit a.page-edit:hover,
+.widget a.page-edit:hover {
+    color: #222;
+}
+
+#footer-edit a.page-edit span,
+.widget a.page-edit span {
+    color: #d2d2d2
+}
+
+#footer-edit a.av-link {
+    padding: 0 10px;
+    background-color: #5298E0;
+    border: 1px solid #378ae0;
+    color: #fff;
+    text-shadow: 0 1px 1px #215b97;
+}
+
+
+/* Slider Elements */
+
+.slideshow-wrap {
+    width: 550px;
+    height: 470px;
+    margin: auto;
+    position: relative;
+    font: 12px Arial, sans-serif;
+    color: #3b3b3b
+}
+
+.slideshow-main {
+    position: absolute;
+    width: 520px;
+    height: 360px;
+    top: 15px;
+    left: 15px;
+}
+
+.slideshow-show {
+    position: absolute;
+    width: 520px;
+    height: 360px;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.slideshow-show div {
+    position: absolute;
+    width: 520px;
+    height: 360px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.slideshow-title {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(http://im.altervista.org/alterpages/slideshow/alpha.png) repeat transparent;
+    color: #fff;
+    height: 32px;
+    width: 500px;
+    line-height: 32px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 10px;
+    z-index: 1;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5)
+}
+
+
+/* Slider buttons */
+
+.slideshow-move-prev,
+.slideshow-move-next {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    cursor: pointer;
+    bottom: 35px;
+    line-height: 22px;
+    background-color: #333;
+    background-repeat: no-repeat;
+    background-position: center;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    ;
+    border-radius: 12px;
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+    /* ie8 + */
+    filter: alpha(opacity=90);
+    /* ie5-7 */
+}
+
+.slideshow-move-prev {
+    left: 5px;
+    background-image: url(http://im.altervista.org/alterpages/slideshow/arw-prev.png)
+}
+
+.slideshow-move-next {
+    right: 5px;
+    background-image: url(http://im.altervista.org/alterpages/slideshow/arw-next.png)
+}
+
+.slideshow-move-prev:hover,
+.slideshow-move-next:hover {
+    background-color: #222;
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    /* ie8 + */
+    filter: alpha(opacity=100);
+    /* ie5-7 */
+}
+
+.slideshow-move-left,
+.slideshow-move-right,
+.slideshow-link {
+    display: none;
+    position: absolute;
+    top: 6px;
+    width: 22px;
+    height: 22px;
+    color: white;
+    z-index: 2;
+    cursor: pointer;
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+    /* ie8 + */
+    filter: alpha(opacity=90);
+    /* ie5-7 */
+}
+
+.slideshow-link {
+    right: 82px;
+    background: url(http://im.altervista.org/alterpages/slideshow/open.png) no-repeat transparent;
+}
+
+.slideshow-move-left {
+    right: 46px;
+    background: url(http://im.altervista.org/alterpages/slideshow/arw-l.png) no-repeat transparent;
+}
+
+.slideshow-move-right {
+    right: 10px;
+    background: url(http://im.altervista.org/alterpages/slideshow/arw-r.png) no-repeat transparent;
+}
+
+.slideshow-link:hover,
+.slideshow-move-left:hover,
+.slideshow-move-right:hover {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    /* ie8 + */
+    filter: alpha(opacity=100);
+    /* ie5-7 */
+}
+
+
+/* Preview thumb */
+
+.slideshow-previews {
+    position: absolute;
+    overflow: hidden;
+    height: 74px;
+    width: 530px;
+    bottom: 10px;
+    left: 10px;
+}
+
+.slideshow-previews>div {
+    position: absolute;
+    top: 0px;
+}
+
+.slideshow-previews>div>div {
+    width: 90px;
+    height: 62px;
+    margin: 5px 6px;
+    cursor: pointer;
+    float: left;
+    padding: 1px;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.6;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)" !important;
+    /* ie8 + */
+    filter: alpha(opacity=60) !important;
+    /* ie5-7 */
+}
+
+.slideshow-previews>div>div.slideshow-preview-active {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)" !important;
+    /* ie8 + */
+    filter: alpha(opacity=100) !important;
+    /* ie5-7 */
+}
+
+.slideshow-previews>div>div:hover {
+    opacity: 1 !important;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)" !important;
+    /* ie8 + */
+    filter: alpha(opacity=100) !important;
+    /* ie5-7 */
+}
+
+
+/* Slider event */
+
+.slideshow-wrap:hover .slideshow-move-left,
+.slideshow-wrap:hover .slideshow-move-right,
+.slideshow-wrap:hover .slideshow-title,
+.slideshow-wrap:hover .slideshow-link {
+    display: block
+}
+
+
+/* ************ Slider Styles *************
+******************************************/
+
+
+/* Dark */
+
+.slideshow-dark {
+    background: #000;
+    color: #3b3b3b
+}
+
+.slideshow-dark .slideshow-previews>div>div {
+    background-color: #000;
+    border: 1px solid #eee;
+}
+
+.slideshow-dark .slideshow-main {
+    background-color: #333;
+}
+
+.slideshow-dark .slideshow-preview-active {
+    border: 1px solid #fff;
+}
+
+.slideshow-dark .slideshow-show div {
+    background-color: #333;
+}
+
+
+/* Light */
+
+.slideshow-light {
+    background: #efefef;
+    color: #2b2b2b;
+    border: 1px solid #c2c2c2;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.slideshow-light .slideshow-main {
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+}
+
+.slideshow-light .slideshow-previews>div>div {
+    background-color: #fff;
+    border: 1px solid #b2b2b2;
+}
+
+.slideshow-light .slideshow-preview-active {
+    border: 1px solid #a2a2a2;
+}
+
+.slideshow-light .slideshow-show div {
+    background-color: #333;
+    -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) inset;
+    background-color: #fff;
+}
+
+
+/* Light */
+
+.slideshow-minimal {
+    background: #fff;
+    color: #2b2b2b;
+    border: 1px solid #bbb;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.slideshow-minimal .slideshow-main {
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+.slideshow-minimal .slideshow-previews>div>div {
+    background-color: #fff;
+    border: 1px solid #bbb;
+}
+
+.slideshow-minimal .slideshow-preview-active {
+    border: 1px solid #aaa;
+}
+
+.slideshow-minimal .slideshow-show div {
+    background-color: #fff;
+}
