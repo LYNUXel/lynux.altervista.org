@@ -1,0 +1,1 @@
+Trimite-mi un mesaj dacă ai nevoie de ajutor, sau dacă dorești să mă contactezi.
